@@ -1,0 +1,24 @@
+{
+  "_readme": "Copy to sources.json and edit. Use a source as <name>:<ref>, e.g. npm run cli -- draft joplin:<noteId>. Commands get the ref as $1 and run in this folder. Keys that start with _ are ignored.",
+
+  "clipboard": {
+    "_readme": "Any app: copy the note as Markdown, then draft clipboard: (nothing after the colon). Relative images resolve against baseDir.",
+    "load": "pbpaste"
+  },
+
+  "joplin": {
+    "_readme": "Joplin Web Clipper service (Settings > Web Clipper). Set JOPLIN_TOKEN. No status command, so the status is not saved in Joplin.",
+    "load": "curl -sf \"http://127.0.0.1:41184/notes/$1?fields=title,body&token=$JOPLIN_TOKEN\" | jq '{title, markdown: .body, frontMatter: false}'"
+  },
+
+  "folder": {
+    "_readme": "Notes kept as files in one folder (Bear/Notable/Zettlr exports, Logseq pages): draft folder:<name without .md>.",
+    "load": "cat \"$HOME/Notes/$1.md\" | jq -Rs --arg dir \"$HOME/Notes\" '{markdown: ., baseDir: $dir}'",
+    "status": "jq -r 'to_entries[] | \"\\(.key)=\\(.value)\"' > \"$HOME/Notes/.x-status-$1.txt\""
+  },
+
+  "web": {
+    "_readme": "Module adapter (.ts or .js): a note served as Markdown at a URL (HackMD, gists, an app's share link).",
+    "module": "./examples/url-source.ts"
+  }
+}

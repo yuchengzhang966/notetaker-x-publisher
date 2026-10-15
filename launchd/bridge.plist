@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template. npm run install-agents fills in __NODE__, __REPO__ and __HOME__ and loads it. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>local.siyuan-x-publisher.bridge</string>
+  <key>ProgramArguments</key>
+  <array><string>__NODE__</string><string>--env-file-if-exists=.env</string><string>service/bridge.ts</string></array>
+  <key>WorkingDirectory</key><string>__REPO__</string>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ThrottleInterval</key><integer>10</integer>
+  <key>StandardOutPath</key><string>__HOME__/Library/Logs/siyuan-x-publisher/bridge.log</string>
+  <key>StandardErrorPath</key><string>__HOME__/Library/Logs/siyuan-x-publisher/bridge.log</string>
+</dict>
+</plist>

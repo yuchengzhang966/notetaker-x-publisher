@@ -1,0 +1,41 @@
+{
+  "name": "siyuan-x-publisher",
+  "version": "1.0.0",
+  "repository": "github:yuchengzhang966/siyuan-x-publisher",
+  "description": "Turn your article in any format into a publish-ready X Article draft.",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env service/server.ts",
+    "bridge": "node --env-file-if-exists=.env service/bridge.ts",
+    "cli": "node --env-file-if-exists=.env service/cli.ts",
+    "login": "node --env-file-if-exists=.env service/cli.ts login",
+    "probe": "node --env-file-if-exists=.env service/cli.ts probe",
+    "typecheck": "tsc -p . && tsc -p plugin --noEmit",
+    "build-plugin": "tsc -p plugin",
+    "install-agents": "sh scripts/install-agents.sh",
+    "install-plugin": "npm run build-plugin && rm -rf ~/SiYuan/data/plugins/siyuan-x-publisher && mkdir -p ~/SiYuan/data/plugins/siyuan-x-publisher && cp plugin/plugin.json plugin/README.md plugin/dist/index.js ~/SiYuan/data/plugins/siyuan-x-publisher/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "private": "true",
+  "dependencies": {
+    "@joplin/turndown-plugin-gfm": "^1.0.68",
+    "katex": "^0.19.0",
+    "mammoth": "^1.13.0",
+    "marked": "^18.1.1",
+    "mermaid": "^12.2.0",
+    "playwright-core": "^1.64.1",
+    "turndown": "^7.2.4",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/turndown": "^5.0.6",
+    "@types/ws": "^8.18.2",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

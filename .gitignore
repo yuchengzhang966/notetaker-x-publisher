@@ -1,0 +1,8 @@
+.cache/
+node_modules/
+.chrome-profile/
+probe.json
+sources.json
+.status/
+plugin/dist/
+.env

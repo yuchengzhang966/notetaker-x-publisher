@@ -1,0 +1,15 @@
+{
+  // SiYuan loads a CommonJS index.js: npm run build-plugin compiles src/ to dist/index.js.
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": [],
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
