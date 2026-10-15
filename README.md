@@ -24,6 +24,62 @@ npm run cli -- draft "$HOME/Documents/Launch post.docx"
 
 Needs X Premium (only Premium accounts can write Articles) and macOS.
 
+## Example
+
+These drafts were made from one Obsidian note, [`test/vault/Markdown File Test.md`](test/vault/Markdown%20File%20Test.md),
+with `npm run cli -- draft "$PWD/test/vault/Markdown File Test.md"`.
+
+**Text, links and an Obsidian image embed.** The front matter `title` became the article title.
+`[[Other Note|another note]]` became plain text, and `![[blue diagram.png]]` was found in the vault
+and uploaded.
+
+```markdown
+---
+title: X Publisher Test — Plain Markdown
+cover: cover.png
+---
+
+# Ignored H1 because front matter has a title
+
+Intro with **bold**, *italic*, ~~strike~~, a [link](https://example.com) and a wiki link to [[Other Note|another note]].
+
+## Images
+
+Obsidian embed:
+
+![[blue diagram.png]]
+```
+
+![X Article draft with text formatting, a heading and an uploaded image](docs/images/example-text-images.png)
+
+**Code, math, a callout and a table.** The code block, the LaTeX and the table use X's own blocks.
+The Obsidian callout became a bold label, and `---` became an X divider.
+
+````markdown
+## Code and math
+
+```js
+console.log("hello");
+```
+
+$$
+e^{i\pi} + 1 = 0
+$$
+
+> [!TIP]
+> Obsidian callout.
+
+| A | B |
+|---|---|
+| 1 | 2 |
+
+---
+
+Done.
+````
+
+![X Article draft with a JavaScript code block, a LaTeX block, a callout and a table](docs/images/example-code-math-table.png)
+
 ## Quick start
 
 ```sh
