@@ -58,4 +58,4 @@ http.createServer(async (req, res) => {
     console.error(`[${ref}]`, err.code || "", err.message);
     send(res, origin, err.code === "busy" ? 409 : 500, { error: err.message, code: err.code || "error" });
   }
-}).listen(PORT, "127.0.0.1", () => console.log(`siyuan-x-publisher on http://127.0.0.1:${PORT}`));
+}).listen(PORT, "127.0.0.1", () => console.log(`notetaker-x-publisher on http://127.0.0.1:${PORT}`));

@@ -45,7 +45,7 @@ class XPublisher extends Plugin {
     try {
       await fetch(SERVICE + "/health");
     } catch {
-      showMessage("Publisher service is not running. Start it with npm start in your siyuan-x-publisher folder.", 8000, "error");
+      showMessage("Publisher service is not running. Start it with npm start in your notetaker-x-publisher folder.", 8000, "error");
       return;
     }
     showMessage("Creating X draft…", 4000);

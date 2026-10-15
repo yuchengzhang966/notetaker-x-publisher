@@ -1,12 +1,12 @@
 {
-  "name": "siyuan-x-publisher",
+  "name": "notetaker-x-publisher",
   "author": "yuchengzhang966",
-  "url": "https://github.com/yuchengzhang966/siyuan-x-publisher",
+  "url": "https://github.com/yuchengzhang966/notetaker-x-publisher",
   "version": "0.1.0",
   "minAppVersion": "3.0.0",
   "backends": ["darwin"],
   "frontends": ["desktop"],
-  "displayName": { "default": "X Articles drafts" },
+  "displayName": { "default": "Notetaker X Publisher" },
   "description": { "default": "Make an X Articles draft from the current document through the local service. You publish the draft in X yourself." },
   "readme": { "default": "README.md" }
 }

@@ -1,4 +1,6 @@
-# Any article → a publish-ready X Article
+# Notetaker X Publisher
+
+**Any article → a publish-ready X Article.**
 
 Write where you like: SiYuan, Obsidian, Notion, Word, or any other note app. This tool turns your
 article into an X Article draft that is ready to publish. It keeps the title, cover, headings, lists,
@@ -25,8 +27,8 @@ Needs X Premium (only Premium accounts can write Articles) and macOS.
 ## Quick start
 
 ```sh
-git clone https://github.com/yuchengzhang966/siyuan-x-publisher.git
-cd siyuan-x-publisher
+git clone https://github.com/yuchengzhang966/notetaker-x-publisher.git
+cd notetaker-x-publisher
 npm install
 npm run bridge                              # keep one DevTools connection to Brave (click "Allow" once)
 npm run cli -- preview "$HOME/Notes/My Article.md"   # see the parts and the format changes, no browser
@@ -245,7 +247,7 @@ Start Brave with remote debugging. `bridge.ts` holds ONE DevTools connection to 
 at `ws://127.0.0.1:9333`, so Brave asks "allow debugging?" only when the bridge starts, not for each job.
 Jobs run one at a time.
 
-The tool works in one dedicated Brave window (`window.name = siyuan-x-publisher-window`).
+The tool works in one dedicated Brave window (`window.name = notetaker-x-publisher-window`).
 It creates the window in the background if it is missing, uses it again after that, and never brings it
 to the front. Keep this window at least partly visible: a fully covered or minimized window can stop
 rendering. Do not close it between jobs.
@@ -260,10 +262,10 @@ stops and leaves the page open. Set `X_DEBUG=1` for a step log.
 `launchd/` has two LaunchAgent templates (bridge and service). Install or reload them with:
 
 ```sh
-npm run install-agents       # fills in this clone's paths, loads local.siyuan-x-publisher.{bridge,server}
+npm run install-agents       # fills in this clone's paths, loads local.notetaker-x-publisher.{bridge,server}
 ```
 
-Logs: `~/Library/Logs/siyuan-x-publisher/`. Restarting the service makes no Brave prompt;
+Logs: `~/Library/Logs/notetaker-x-publisher/`. Restarting the service makes no Brave prompt;
 restarting the bridge (or Brave) makes one.
 
 ## Development

@@ -119,7 +119,7 @@ const server = http.createServer((req, res) => {
   // Playwright and other tools discover the endpoint here.
   if (req.url?.startsWith("/json/version")) {
     res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ Browser: "siyuan-x-publisher bridge", webSocketDebuggerUrl: `ws://127.0.0.1:${PORT}/devtools/browser/bridge` }));
+    res.end(JSON.stringify({ Browser: "notetaker-x-publisher bridge", webSocketDebuggerUrl: `ws://127.0.0.1:${PORT}/devtools/browser/bridge` }));
     return;
   }
   if (req.url === "/status") {

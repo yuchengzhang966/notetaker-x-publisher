@@ -1,11 +1,11 @@
 ---
 name: x-articles
-description: Make an X (Twitter) Article draft from a note or document in any note-taking app (SiYuan, Notion pages, Obsidian, Markdown files, Word .docx/.doc/.rtf/.odt files, Joplin, Bear, Logseq, or any custom app), through the local siyuan-x-publisher. The tool only makes drafts; the user publishes in X. Use when the user asks to post, publish, draft, or send a note/doc/article to X or Twitter as an Article, preview how a note will look on X, resume a stopped X draft, connect a new note app to the X publisher, or fix the X publisher. Trigger phrases include "publish to X", "post this to X", "X article", "Twitter article", "draft on X", "send note to X", "publish my siyuan doc", "publish this markdown to X", "publish my note to X", "publish this Word doc to X", "docx to X", "publish this Notion page to X", "notion.so link to X".
+description: Make an X (Twitter) Article draft from a note or document in any note-taking app (SiYuan, Notion pages, Obsidian, Markdown files, Word .docx/.doc/.rtf/.odt files, Joplin, Bear, Logseq, or any custom app), through the local Notetaker X Publisher. The tool only makes drafts; the user publishes in X. Use when the user asks to post, publish, draft, or send a note/doc/article to X or Twitter as an Article, preview how a note will look on X, resume a stopped X draft, connect a new note app to the X publisher, or fix the X publisher. Trigger phrases include "publish to X", "post this to X", "X article", "Twitter article", "draft on X", "send note to X", "publish my siyuan doc", "publish this markdown to X", "publish my note to X", "publish this Word doc to X", "docx to X", "publish this Notion page to X", "notion.so link to X".
 ---
 
-# X Articles drafts
+# Notetaker X Publisher
 
-Repo: https://github.com/yuchengzhang966/siyuan-x-publisher (its `README.md` has the full format table).
+Repo: https://github.com/yuchengzhang966/notetaker-x-publisher (its `README.md` has the full format table).
 The tool converts a note or document and fills the X Articles editor in the user's logged-in Brave,
 in a dedicated background window, and saves it as a draft. X Articles need X Premium.
 
@@ -19,7 +19,7 @@ REPO=$(cd "$(dirname "$(readlink -f ~/.claude/skills/x-articles/SKILL.md)")/.." 
 If there is no clone (the skill was copied alone), ask the user before you install it:
 
 ```sh
-git clone https://github.com/yuchengzhang966/siyuan-x-publisher.git && cd siyuan-x-publisher && npm install
+git clone https://github.com/yuchengzhang966/notetaker-x-publisher.git && cd notetaker-x-publisher && npm install
 ```
 
 Run every command from `$REPO`, through npm (npm loads `.env`, which holds tokens such as `NOTION_TOKEN`):
@@ -38,7 +38,7 @@ npm runs the CLI in the repo folder, so give files as **absolute paths**.
 - When the user asks to "publish" or "post", make a draft and tell them to review it in X and click
   **Publish** there themselves.
 - Run one job at a time. A second job fails with `busy`.
-- Do not close, focus, or move the Brave work window (`siyuan-x-publisher-window`).
+- Do not close, focus, or move the Brave work window (`notetaker-x-publisher-window`).
 - Never ask the user to paste a token or secret into the chat. Never print `.env`.
 
 ## Step 1: Identify the content type
@@ -162,11 +162,11 @@ plus entries from `sources.json`). Any built-in also takes a `name:` prefix, for
 1. **Check the services** (both are LaunchAgents and normally run):
    ```sh
    curl -s -m 3 127.0.0.1:6830/health            # service → {"ok":true}
-   curl -s -m 3 127.0.0.1:9333/json/version      # bridge → "siyuan-x-publisher bridge"
+   curl -s -m 3 127.0.0.1:9333/json/version      # bridge → "notetaker-x-publisher bridge"
    ```
    The CLI does not need the service (port 6830); only app plugins use it (POST `/preview` or
    `/draft` with `{ref}`). The CLI needs the bridge, or Brave asks "allow debugging?" for each job.
-   If the bridge is down: `launchctl kickstart -k gui/$(id -u)/local.siyuan-x-publisher.bridge`,
+   If the bridge is down: `launchctl kickstart -k gui/$(id -u)/local.notetaker-x-publisher.bridge`,
    then tell the user to click **Allow** in Brave.
 
 2. **Preview** (no browser, safe):
@@ -220,7 +220,7 @@ npm run -s cli -- resume <ref> <draftUrl> <n>
 - Notion conversion: test with the mock API in `test/notion/mock-api.ts` (see README "Notion pages").
 - X changed its editor: run `npm run probe` (writes `probe.json` with the editor controls), then
   update `service/selectors.ts`. All X page assumptions are in that file.
-- Service logs: `~/Library/Logs/siyuan-x-publisher/`. If the LaunchAgents are missing or point to an
+- Service logs: `~/Library/Logs/notetaker-x-publisher/`. If the LaunchAgents are missing or point to an
   old path, run `npm run install-agents` (one Brave prompt).
-- Restart the service with `launchctl kickstart -k gui/$(id -u)/local.siyuan-x-publisher.server`
+- Restart the service with `launchctl kickstart -k gui/$(id -u)/local.notetaker-x-publisher.server`
   (no Brave prompt). Restarting the bridge makes one Brave prompt.

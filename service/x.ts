@@ -75,7 +75,7 @@ async function realBrowserEndpoint(): Promise<string | null> {
 // is not, and neither is a window that is fully covered, minimized or on another desktop.
 // So the work tab lives alone in its own window: keep any part of that window visible.
 // Nothing is brought to the front.
-const WINDOW_NAME = "siyuan-x-publisher-window";
+const WINDOW_NAME = "notetaker-x-publisher-window";
 
 async function findWorkTab(context: BrowserContext): Promise<Page | null> {
   for (const p of context.pages()) {

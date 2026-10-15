@@ -1,7 +1,7 @@
-# X Articles drafts
+# Notetaker X Publisher
 
 Adds "Create X draft" to the document title menu (click the document icon next to the title) and to the command palette.
-Needs the local service from `~/Project/siyuan-x-publisher` (`npm start`).
+Needs the local service from https://github.com/yuchengzhang966/notetaker-x-publisher (`npm start` in your clone).
 
 The plugin only makes drafts. It never publishes. Review the draft in X and publish it there yourself.
 
