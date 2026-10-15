@@ -5,7 +5,7 @@ description: Make an X (Twitter) Article draft from a note or document in any no
 
 # Notetaker X Publisher
 
-Repo: https://github.com/yuchengzhang966/notetaker-x-publisher (its `README.md` has the full format table).
+Repo: https://github.com/yuchengzhang966/notetaker-x-publisher (`docs/REFERENCE.md` there has the full format table and set-up details).
 The tool converts a note or document and fills the X Articles editor in the user's logged-in Brave,
 in a dedicated background window, and saves it as a draft. X Articles need X Premium.
 
@@ -108,7 +108,7 @@ plus entries from `sources.json`). Any built-in also takes a `name:` prefix, for
 
 - Needs `NOTION_TOKEN` (in `.env` or the environment). Check without printing it:
   `grep -q '^NOTION_TOKEN=' .env 2>/dev/null || [ -n "$NOTION_TOKEN" ]`.
-- No token: tell the user the one-time set-up (README "Notion pages"): create a connection at
+- No token: tell the user the one-time set-up (`docs/REFERENCE.md`, "Notion pages"): create a connection at
   https://www.notion.so/profile/integrations with Read content (and Update content to save status), put the
   secret in `.env` as `NOTION_TOKEN=...` themselves, and share the page with the connection (page `•••`
   menu → Connections). Without set-up, a one-off is possible if a Notion MCP connector is authorized:
@@ -141,7 +141,7 @@ plus entries from `sources.json`). Any built-in also takes a `name:` prefix, for
 2. **One-off** (no source): get the note as Markdown (the app's Markdown export, its API, an MCP tool, or
    the clipboard), then use [E](#e-pasted-text-and-the-clipboard). For an app that exports Word, use [C](#c-word-and-rich-text-documents).
 3. **Connect the app** (only when the user asks for repeated use): add an entry to `sources.json` in the repo
-   (start from `sources.example.json`; the file is git-ignored). See README "Other note apps". In short:
+   (start from `sources.example.json`; the file is git-ignored). See `docs/REFERENCE.md`, "Connect any note app". In short:
    - `load`: shell command; the ref is `$1` (never paste the ref into the command text). It prints Markdown
      or JSON `{markdown, title, baseDir, cover, status, frontMatter}`.
    - `status` (optional): shell command; the ref is `$1`, the status fields are JSON on stdin.
@@ -217,7 +217,7 @@ npm run -s cli -- resume <ref> <draftUrl> <n>
 - Step log: prefix the command with `X_DEBUG=1`.
 - The code is TypeScript that Node runs directly. After a code change run `npm run typecheck`
   (strict `tsc`); keep to Node-erasable syntax (no enums, namespaces, parameter properties) and `import type`.
-- Notion conversion: test with the mock API in `test/notion/mock-api.ts` (see README "Notion pages").
+- Notion conversion: test with the mock API in `test/notion/mock-api.ts` (see `docs/REFERENCE.md`, "Notion pages").
 - X changed its editor: run `npm run probe` (writes `probe.json` with the editor controls), then
   update `service/selectors.ts`. All X page assumptions are in that file.
 - Service logs: `~/Library/Logs/notetaker-x-publisher/`. If the LaunchAgents are missing or point to an
